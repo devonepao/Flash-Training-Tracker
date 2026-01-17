@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flash Training Tracker</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="top">
+        <div>
+          <p class="eyebrow">Flash Training Tracker</p>
+          <h1>Flash Training Calculator</h1>
+          <p class="subhead">
+            Mobile-first speed and pace insights with light iOS-inspired visuals and instant comparisons.
+          </p>
+        </div>
+        <nav class="top-nav">
+          <a class="pill" href="stats.html">Share stats</a>
+        </nav>
+      </header>
+
+      <section class="card intro">
+        <div>
+          <h2>Run the numbers</h2>
+          <p>
+            Enter your distance and time, then optional pace or step count to calculate speed, cadence,
+            and pace. The charts update instantly so you can see how your pace compares with Usain Bolt,
+            a fighter jet, and a hummingbird.
+          </p>
+        </div>
+        <div class="glow">
+          <span>⚡️</span>
+        </div>
+      </section>
+
+      <main class="grid">
+        <section class="card calculator" aria-label="Flash training calculator">
+          <h2>Training inputs</h2>
+          <form id="calculator-form" class="form">
+            <label>
+              Distance (km)
+              <input id="distance" type="number" min="0" step="0.01" placeholder="5.00" />
+            </label>
+            <div class="time-group">
+              <label>
+                Time (minutes)
+                <input id="time-min" type="number" min="0" step="1" placeholder="24" />
+              </label>
+              <label>
+                Seconds
+                <input id="time-sec" type="number" min="0" max="59" step="1" placeholder="30" />
+              </label>
+            </div>
+            <label>
+              Pace (min/km, optional)
+              <input id="pace" type="number" min="0" step="0.01" placeholder="4.90" />
+            </label>
+            <label>
+              Steps (optional)
+              <input id="steps" type="number" min="0" step="1" placeholder="6500" />
+            </label>
+            <p class="helper">
+              Leave pace blank if you already entered time. Pace is used to estimate time when it is not
+              provided.
+            </p>
+          </form>
+        </section>
+
+        <section class="card results" aria-label="Calculated results">
+          <h2>Calculated metrics</h2>
+          <div class="results-grid">
+            <div class="result">
+              <span class="label">Total time</span>
+              <span class="value" id="result-time">--</span>
+            </div>
+            <div class="result">
+              <span class="label">Pace</span>
+              <span class="value" id="result-pace">--</span>
+            </div>
+            <div class="result">
+              <span class="label">Speed (km/min)</span>
+              <span class="value" id="result-km-min">--</span>
+            </div>
+            <div class="result">
+              <span class="label">Speed (m/min)</span>
+              <span class="value" id="result-m-min">--</span>
+            </div>
+            <div class="result">
+              <span class="label">Speed (m/s)</span>
+              <span class="value" id="result-m-s">--</span>
+            </div>
+            <div class="result">
+              <span class="label">Stride length</span>
+              <span class="value" id="result-stride">--</span>
+            </div>
+            <div class="result">
+              <span class="label">Steps per minute</span>
+              <span class="value" id="result-cadence">--</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="card charts" aria-label="Speed comparisons">
+          <div class="charts-header">
+            <div>
+              <h2>Speed comparisons</h2>
+              <p>
+                Tap or hover a row to highlight. Scale shows the maximum value in each chart. For
+                minutes per kilometer, a smaller bar means a faster pace.
+              </p>
+            </div>
+            <div class="legend">
+              <span class="legend-pill">You</span>
+              <span class="legend-pill">Usain Bolt</span>
+              <span class="legend-pill">Fighter jet</span>
+              <span class="legend-pill">Hummingbird</span>
+            </div>
+          </div>
+
+          <div class="chart" data-metric="kmPerMin">
+            <div class="chart-title">
+              <h3>Speed (km/min)</h3>
+              <div class="chart-scale">0 <span data-scale="kmPerMin"></span></div>
+            </div>
+            <div class="chart-bars" data-bars="kmPerMin"></div>
+          </div>
+
+          <div class="chart" data-metric="mPerMin">
+            <div class="chart-title">
+              <h3>Speed (m/min)</h3>
+              <div class="chart-scale">0 <span data-scale="mPerMin"></span></div>
+            </div>
+            <div class="chart-bars" data-bars="mPerMin"></div>
+          </div>
+
+          <div class="chart" data-metric="mPerSec">
+            <div class="chart-title">
+              <h3>Speed (m/s)</h3>
+              <div class="chart-scale">0 <span data-scale="mPerSec"></span></div>
+            </div>
+            <div class="chart-bars" data-bars="mPerSec"></div>
+          </div>
+
+          <div class="chart" data-metric="minPerKm">
+            <div class="chart-title">
+              <h3>Minutes per kilometer</h3>
+              <div class="chart-scale">0 <span data-scale="minPerKm"></span></div>
+            </div>
+            <div class="chart-bars" data-bars="minPerKm"></div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <span>© <span data-year></span> Flash Training Tracker. Built for focused, fast feedback.</span>
+      </footer>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
